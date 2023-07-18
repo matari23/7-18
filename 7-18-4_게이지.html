@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .progressbar{
+            width: 400px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #ccc;
+            margin: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress{
+            position: absolute;
+            top: 3px;
+            right: 5px;
+            z-index: 10;
+        }
+        .progress::after{
+            content: "%";
+        }
+        .progressbar1::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            width: 0;
+            background-color: rgb(186, 238, 84);
+            animation: progress1  5s  ease forwards;
+        }
+        @keyframes progress1{
+            0%{width: 0;}
+            100%{width: 100%;}
+        }
+        .progressbar2::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            width: 0;
+            background-color: rgb(155, 147, 243);
+            animation: progress2  5s  ease forwards;
+        }
+        @keyframes progress2{
+            0%{width: 0;}
+            100%{width: 80%;}
+        }
+        .progressbar3::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            width: 0;
+            background-color: rgb(244, 109, 61);
+            animation: progress3  5s  ease forwards;
+        }
+        @keyframes progress3{
+            0%{width: 0;}
+            100%{width: 70%;}
+        }
+    </style>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        $(function(){
+            $({val:0}).animate({val:100},{duration:5000,step:function(){
+                $(".progress1").text(Math.floor(this.val))
+            },
+            complete:function(){
+            $(".progress1").text(Math.floor(this.val));
+            $(".progress1").css("color","#fff")
+            }
+            })//
+            
+            $({val:0}).animate({val:80},{duration:5000,step:function(){
+                $(".progress2").text(Math.floor(this.val))
+            },
+            complete:function(){
+            $(".progress2").text(Math.floor(this.val));
+            $(".progress2").css("color","#fff")
+            }
+            })//
+
+            $({val:0}).animate({val:70},{duration:5000,step:function(){
+                $(".progress3").text(Math.floor(this.val))
+            },
+            complete:function(){
+            $(".progress3").text(Math.floor(this.val));
+            $(".progress3").css("color","#fff")
+            }
+            })
+
+        })//jq
+    </script>
+</head>
+<body>
+    
+    <div class="progressbar progressbar1">
+        <span class="progress progress1">0</span>
+    </div><!-- progressbar -->
+    <div class="progressbar progressbar2">
+        <span class="progress progress2">0</span>
+    </div><!-- progressbar -->
+    <div class="progressbar progressbar3">
+        <span class="progress progress3">0</span>
+    </div><!-- progressbar -->
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script lang="java">
+        $(function(){
+            var typingBool = false
+            var typingdx = 0
+            var liindex = 0
+            var liLength = $(".typing_txt > ul > li").length
+
+            //타이핑 할 텍스트를 가져오다
+
+            var typingtxt = $(".typing_txt > ul > li").eq(liindex).text()
+            typingtxt = typingtxt.split("") //split? 한글자씩 쪼개기
+
+            if(typingBool == false){//타이핑이 진행되지 않았다면
+                typingBool = true;
+                //타이핑이 진행되게 함
+                var tyint = setInterval(typing,100)//반복동작
+            }
+            function typing(){
+                if(typingdx <typingtxt.length ){
+                    $(".typing").append(typingtxt[typingdx]);//한글자씩 이어준다
+                    typingdx++;
+                }else{//한문장이 끝나면
+                    //다음문장으로 이동.. 마지막 문장이면 다시 첫번째 문장으로 이동..
+                    if(liindex >= liLength-1){
+                        liindex=0;
+                    }else{
+                        liindex++;
+                    }//
+                    console.log(liindex)
+                    //다음문장을 타이핑하기 위한 셋팅
+                    typingdx=0;
+                    typingBool = false;
+                    typingtxt = $(".typing_txt > ul > li").eq(liindex).text();
+                    //다음 문장 타이핑전 1초쉬기
+                    clearInterval(tyint)
+                    setTimeout(function(){
+                        $(".typing").html("");
+                        tyint = setInterval(typing,100)
+                    },1000);
+                }
+            }//function typing
+        })/* jQuery Close */
+    </script>
+    <style type="text/css">
+        .typing_txt{display: none;}
+        .typing_txt li{list-style: none;}
+        .typing{
+            display: inline-block;
+            animation: cursor 0.3s infinite;
+        }
+
+        @keyframes cursor {
+            0%{border-right: 1px solid #fff;}
+            50%{border-right: 1px solid #000}
+            100%{border-right: 1px solid #fff;}
+        }
+    </style>
+</head>
+
+<body>
+    <div class="typing_txt">
+        <ul>
+            <li>타이핑될 첫번 째 문장</li>
+            <li>타이핑될 두번 째 문장이</li>
+            <li>타이핑될 마지막 문장 이지</li>
+            <li>정경용  </li>
+        </ul>
+    </div><!-- typing_txt -->
+    <p class="typing"></p>
+</body>
+
+</html>

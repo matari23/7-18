@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script/jquery-3.6.4.js"></script>
+    <title>Document</title>
+    <style type="text/css">
+        .gauge_container{
+            width: 1200px;
+            margin: 100px auto;
+            text-align: center;
+            border: 1px solid green;
+        }
+        .gauge{
+            width: 250px;
+            height: 250px;
+            display: inline-block;
+        }
+    </style>
+    <script lang="java">
+        document.addEventListener("DOMContentLoaded", function(event){
+            var dflt = {
+                min:0,
+                max:100,
+                donut:true,
+                gaugeWidthScale:0.5,
+                counter:true,
+                hideInnerShadow:true,
+            }
+            var gg1 = new JustGage({
+                id:"gg1",
+                value:100,
+                title:"JAVASCRIPT",
+                defaults:dflt
+
+            })
+            var gg2 = new JustGage({
+                id:"gg2",
+                value:25,
+                title:"JAVASCRIPT",
+                defaults:dflt
+
+            })
+            var gg3 = new JustGage({
+                id:"gg3",
+                value:80,
+                title:"JAVASCRIPT",
+                defaults:dflt
+
+            })
+        })//
+    </script>
+</head>
+<body>
+    <div class="gauge_container">
+        <div class="gauge" id="gg1" data-value="100"></div>
+        <div class="gauge" id="gg2" data-value="25"></div>
+        <div class="gauge" id="gg3" data-value="80"></div>
+    </div><!-- gauge_container -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.2/justgage.js"></script>
+    
+</body>
+</html>

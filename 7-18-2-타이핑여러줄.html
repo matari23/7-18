@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script lang="java">
+    $(function(){
+        var tyingBool =false; //타이핑여부
+        var typingIdx = 0; //글자의 인덱스
+        var liIndex = 0; //li의 인덱스
+        var liLength = $(".typing_text > ul > li").length //li의 개수 1~3(인덱스 넘버는 0~2)
+        //타이핑이될 텍스트를 가져오기
+        var typingTxt = $(".typing_text > ul > li").eq(liIndex).text();
+        //한글자씩 자르기
+        typingTxt = typingTxt.split("")
+        console.log("typingTxt:",typingTxt)
+        if(tyingBool == false){
+            //타이핑이 진행되지 않을때
+            tyingBool = true;
+            //타이핑하기
+            var time =setInterval(typing , 100);//반복동작
+        }
+        function typing(){
+            $(".typing ul li").removeClass("on");
+            $(".typing ul li").eq(liIndex).addClass("on")
+            //타이핑될 길이만큼 반복
+            if(typingIdx < typingTxt.length){
+
+                $(".typing ul li").eq(liIndex).append(typingTxt[typingIdx]);//한굴자씩 뒤에 이어준다
+                typingIdx++;
+                console.log(typingIdx)
+            }else{
+                if(liIndex < liLength-1){
+                    liIndex++;
+                    console.log(liIndex)
+                    //다음 문장을 타이핑 하기 위한 셋팅
+                    tyingBool=false;
+                    typingIdx = 0;
+                    typingTxt = $(".typing_text > ul > li").eq(liIndex).text();
+                    //1초 쉬기
+                    clearInterval(time)//타이핑 종료
+                    setTimeout(function(){
+                        time =setInterval(typing , 100);
+                    },1000)
+                }else if(liIndex == liLength-1){
+                    //마지막 문장까지 써지면 반복 종료
+                    clearInterval(time)
+                }
+            }//if (typingIdx < typingTxt.length)
+        }//function typing
+    })//jq
+    </script>
+    <style type="text/css">
+        li{list-style: none;}
+        .typing_text{display: none;}
+        .typing{}
+        .typing ul{}
+        .typing ul li{display: block;}
+        .typing ul li.on{
+            display: inline-block;
+            animation: cursor 0.3s infinite;
+        }
+
+        @keyframes cursor{
+            0%{border-right: 1px solid #fff;}
+            50%{border-right: 1px solid #000;}
+            100%{border-right: 1px solid #fff;}
+        }
+    </style>
+</head>
+<body>
+    <div class="typing_text">
+        <ul>
+            <li>타이핑될 첫번째 문장</li>
+            <li>타이핑될 두번째 문장</li>
+            <li>타이핑될 마지막 문장</li>
+        </ul>
+    </div><!-- typing_text -->
+    <div class="typing">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>
