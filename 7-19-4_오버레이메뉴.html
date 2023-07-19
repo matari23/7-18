@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overlay menu 02</title>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script lang="java">
+        $(document).ready(function(){
+            var mainBtn = $(".main_button")
+            var CloseBtn = $(".close-button")
+            var layer = $(".layered-content")
+            var wrapper = $(".button_wrapper")
+
+            mainBtn.click(function(){
+                wrapper.addClass("clicked").delay(900).queue(function(){
+                    layer.addClass("active");
+                    next()
+                })
+
+            })/* mainBtn click */
+        })/* jQuery Close */
+    </script>
+
+    <style type="text/css">
+        *{margin: 0; padding: 0;}
+        html,body{height: 100%; background-color: rgb(65, 225, 148); }
+        #pool{width: 100vw; height: 100vh; position: absolute; background: none; overflow: hidden;}
+        .button_wrapper{width: 54px; height: 100%; position: absolute; bottom: 0; right: 0; 
+        display: flex; align-items: center; justify-content: center;}
+        button{width: 54px; height: 54px; border: none; border-radius: 50%; cursor: pointer; 
+        position: relative; z-index: 4;}
+        .main_button{background-color: rgb(18, 213, 92); align-self: flex-end;}
+        .layer{position: absolute; left: 0; right: 0; bottom: 0; 
+        width: 54px; height: 54px; background-color: orange; border-radius: 50%;}
+        .layered-content{position: absolute; top: 0; left: 0; bottom: 0; right: 0; display: flex; 
+        align-items: center; justify-content: center; opacity: 0; transition: all 0.7s ease 0.3s;}
+        .layered-content.active{opacity: 1;}
+        .close-button{background: #fff; position: absolute; right: 20px; top: 20px;}
+        .layered-content.active .close-button{}
+        .content p{opacity: 0; position: relative; top: -8px; transition: all 0.5s ease 0.5s;}
+        .layered-content.active .content p{opacity: 1; top: 0;}
+        .button_wrapper.clicked{transform: rotate(180deg) translateY(-20px) translateX(20px); 
+        right: 0; bottom: 0; transition: all 0.3s ease 0.6s;}
+        .button_wrapper.clicked .main_button{opacity: 0; transition: all 0.3s ease 0.3s;}
+        .button_wrapper.clicked .layer{transform: scale(100); transition: all 2s ease 0.9s;}
+    </style>
+
+</head>
+<body>
+    <div id="pool">
+        <div class="button_wrapper">
+            <div class="layer"></div>
+            <button class="main_button fa_plus">
+                <div class="ripple"></div>
+            </button><!-- main_button -->
+        </div><!-- button_wrapper -->
+
+        <div class="layered-content">
+            <button class="close-button fa-times fa"></button>
+            <div class="content">
+                <p>abcd efg</p>
+                <h1>Otters Rule</h1>
+                <p>hijk lmnop</p>
+            </div><!-- content -->
+        </div><!-- layered-content -->
+    </div><!-- pool -->
+</body>
+</html>
