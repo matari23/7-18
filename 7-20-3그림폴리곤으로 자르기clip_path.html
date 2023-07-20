@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .img-wrap{
+            /* clip-path: circle(100px at 20% 20%); */
+            /* clip-path: ellipse(50px 100px at 20% 20%); */
+            /* clip-path: triangle(10% 10% , 20% 20% , 30% 30%); */
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+        }
+        /* h1{
+            font-size: 2.5rem;
+        }
+        @media screen and (max-width:1280px) {
+            h1{font-size: 2.5vw;}
+        }
+        @media screen and (max-width:640px) {
+            h1{font-size: 1rem;}
+        } */
+        h1{
+            /* font-size: clamp (min,기본,max); */
+            /* font-size: (1rem, 2.5vw , 2rem); 현재는 지원안됨 */
+        }
+    </style>        
+</head>
+<body>
+    <h1>YONG</h1>
+    <div class="img-wrap">
+                <img src="https://images.unsplash.com/photo-1496865534669-25ec2a3a0fd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="">
+    </div><!-- img-wrap -->
+</body>
+</html>

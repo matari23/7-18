@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+    <style type="text/css">
+        *{margin: 0;padding: 0;box-sizing: border-box;}
+        body{
+            font-family: 'Caprasimo', cursive;font-weight: 400; font-size: 15px; line-height: 1.7; color: #fff;background-color: rgb(2, 2, 133);overflow-x: hidden;
+        }
+        .section-fluid-main{
+            width: calc(100% - 40px);
+            max-width: 1140px;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 100px 0;
+            position: relative;
+            display: block;
+            overflow: hidden;
+        }
+        .section-row{
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .section-row:hover .section-col{
+            opacity: 0.1;
+        }
+
+        .section-row .section-col:hover{
+            opacity: 1;
+        }
+        .section-col{
+            position: relative;
+            width: 100%;
+            max-width: 50%;
+            flex:0 0 50%;
+            transition: all 250ms linear;
+        }
+        .section{
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+            padding: 15px ;
+            display: block;
+            overflow: hidden;
+        }
+        .section-in{
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .section-in img{
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: all 250ms linear;
+        }
+        .section-col:hover .section-in img{
+            transform: scale(1.2) rotate(3deg);
+        }
+        .hover-text{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            pointer-events: none;
+            mix-blend-mode: difference;
+        }
+        .hover-text h2{
+            font-size: 8vw;
+            font-weight: 800;
+            line-height: 1;
+            opacity: 0;
+            transform: scale(0.7);
+            transition: transform 250ms linear , opacity 200ms ease;
+        }
+        .section-col:hover + .hover-text h2{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .logo{
+            position: fixed;
+            left: 25px;
+            top: 25px;
+            z-index: 101;
+        }
+        .logo img{
+            height: 26px;
+            display: block;
+        }
+
+        @media (max-width:768px) {
+            .section-col{
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .hover-text h2{
+                font-size: 12vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section-fluid-main">
+        <div class="section-row">
+
+            <div class="section-col">
+                <div class="section">
+                    <div class="section-in">
+                        <img src="https://assets.codepen.io/1462889/sl1.jpg" alt="img1">
+                    </div><!-- section-in -->
+                </div><!-- section -->
+            </div><!-- section-col -->
+
+            <div class="hover-text">
+                <h2>Male goofy Face</h2>
+            </div><!-- hover-text -->
+
+            <div class="section-col">
+                <div class="section">
+                    <div class="section-in">
+                        <img src="https://assets.codepen.io/1462889/sl2.jpg" alt="img2">
+                    </div><!-- section-in -->
+                </div><!-- section -->
+            </div><!-- section-col -->
+
+            <div class="hover-text">
+                <h2>Toy Pig</h2>
+
+            </div><!-- hover-text -->
+            <div class="section-col">
+                <div class="section">
+                    <div class="section-in">
+                        <img src="https://assets.codepen.io/1462889/sl3.jpg" alt="img3">
+                    </div><!-- section-in -->
+                </div><!-- section -->
+            </div><!-- section-col -->
+
+            <div class="hover-text">
+                <h2>Shy Portrait </h2>
+            </div><!-- hover-text -->
+
+            <div class="section-col">
+                <div class="section">
+                    <div class="section-in">
+                        <img src="https://assets.codepen.io/1462889/sl4.jpg" alt="img4">
+                    </div><!-- section-in -->
+                </div><!-- section -->
+            </div><!-- section-col -->
+
+            <div class="hover-text">
+                <h2>Skateboard Face</h2>
+            </div><!-- hover-text -->
+
+            <div class="section-col">
+                <div class="section">
+                    <div class="section-in">
+                        <img src="https://assets.codepen.io/1462889/sl5.jpg" alt="img5">
+                    </div><!-- section-in -->
+                </div><!-- section -->
+            </div><!-- section-col -->
+
+            <div class="hover-text">
+                <h2>Mirror Reflection </h2>
+            </div><!-- hover-text -->
+
+            <div class="section-col">
+                <div class="section">
+                    <div class="section-in">
+                        <img src="https://assets.codepen.io/1462889/sl6.jpg" alt="img6">
+                    </div><!-- section-in -->
+                </div><!-- section -->
+            </div><!-- section-col -->
+
+            <div class="hover-text">
+                <h2>Funny Bunny</h2>
+            </div><!-- hover-text -->
+        </div><!-- section-row -->
+        <a href="#" class="logo">
+            <img src="https://assets.codepen.io/1462889/fcy.png" alt="img7">
+        </a>
+    </div><!-- section-fluid-main -->
+</body>
+</html>

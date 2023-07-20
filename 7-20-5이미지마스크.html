@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .mask1{
+            mask-image: url(imgs/icon03.png);
+            -webkit-mask-image: url(imgs/icon03.png);
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+        }
+        .mask2{
+            mask-image: linear-gradient(black,transparent);
+            -webkit-mask-image: linear-gradient(black,transparent);
+        }
+        .mask3{
+            /* background: url("http://www.yomidog.com/preSaleUpFile/200529_%EA%B9%80%ED%8F%AC%EC%9B%B0%EC%8B%9C%EC%BD%94%EA%B8%B0_638.JPG") no-repeat; */
+            mask-image: radial-gradient(circle, black 50% ,  pink 50% );
+            -webkit-mask-image: radial-gradient(circle, black 50% , pink 50% );
+        }
+    </style>
+</head>
+<body>
+    <div class="mask1">
+        <img src="http://www.yomidog.com/preSaleUpFile/200529_%EA%B9%80%ED%8F%AC%EC%9B%B0%EC%8B%9C%EC%BD%94%EA%B8%B0_638.JPG" width="800" height="400" alt="image1">
+    </div><!-- mask1 -->
+    <div class="mask2">
+        <img src="http://www.yomidog.com/preSaleUpFile/200529_%EA%B9%80%ED%8F%AC%EC%9B%B0%EC%8B%9C%EC%BD%94%EA%B8%B0_638.JPG" width="600" height="400" alt="image1">
+    </div><!-- mask2 -->
+    <div class="mask3">
+        <img src="http://www.yomidog.com/preSaleUpFile/200529_%EA%B9%80%ED%8F%AC%EC%9B%B0%EC%8B%9C%EC%BD%94%EA%B8%B0_638.JPG" width="600" height="400" alt="image1">
+    </div><!-- mask3 -->
+</body>
+</html>
