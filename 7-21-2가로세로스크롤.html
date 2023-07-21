@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        $(function(){
+
+        })//jq
+    </script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f1f1f1;
+        }
+
+        .wrap {}
+
+        .wrap h1 {
+            text-align: center;
+            line-height: 2;
+        }
+
+        .box {
+            width: 500px;
+            margin: 100px auto;
+            overflow: hidden;
+            /* overflow-x: scroll; 이렇게 넣으면 그림 밑에 바가 생겨서 이미지 안보이는 것도 보이게 제어할 수 있음*/
+        }
+
+        .img_area {
+            height: 200px;
+            position: relative;
+            overflow: auto;
+            /* overflow-y: scroll; */
+            /* overflow-x: hidden; */
+        }
+        .img_area::-webkit-scrollbar{width: 10px; /* background-color: wheat; */}
+        .img_area::-webkit-scrollbar-thumb{background-color: rgb(47, 43, 47); border-radius: 10px; border: 2px solid transparent; background-clip: padding-box;}
+        .img_area::-webkit-scrollbar-track{background-color: rgb(221, 218, 221);border-radius: 10px; box-shadow: 0 0 5px #f8f4f4;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Scrollbar</h1>
+        <div class="box">
+            <div class="img_area">
+                <img src="imgs/bg1.jpg" alt="image">
+            </div><!-- img_area -->
+        </div><!-- box -->
+    </div><!-- wrap -->
+</body>
+</html>

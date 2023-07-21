@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <!-- <script src="script/dragable_img.js"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        .picture {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 5px solid #fff;
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .picture_img {
+            display: block;
+            width: 300px;
+            height: 300px;
+            pointer-events: none;
+        }
+
+        .picture_note {
+            font-family: 'Nanum Brush Script', cursive;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 12px 24px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="picture">
+            <img src="imgs/더글로리포스터.jpg" alt="더글로리포스터" class="picture_img">
+            <div class="picture_note">
+                <span>포토샵더글로리포스터</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+        <div class="picture">
+            <img src="imgs/명함2,목업2.jpg" alt="명함목업2" class="picture_img">
+            <div class="picture_note">
+                <span>명함목업2</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+        <div class="picture">
+            <img src="imgs/명함만들기목업1.jpg" alt="명함만들기목업1" class="picture_img">
+            <div class="picture_note">
+                <span>명함만들기목업1</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+        <div class="picture">
+            <img src="imgs/여행여플목업2.jpg" alt="여행여플목업2" class="picture_img">
+            <div class="picture_note">
+                <span>피그마여행여플목업2</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+        <div class="picture">
+            <img src="imgs/인어공주목업.jpg" alt="인어공주목업" class="picture_img">
+            <div class="picture_note">
+                <span>팝아트인어공주</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+        <div class="picture">
+            <img src="imgs/일러스트너구리포토샵잠만보.jpg" alt="일러스트너구리포토샵잠만보" class="picture_img">
+            <div class="picture_note">
+                <span>일러스트너구리포토샵잠만보</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+        <div class="picture">
+            <img src="imgs/제주여행배너.jpg" alt="제주여행배너" class="picture_img">
+            <div class="picture_note">
+                <span>제주여행배너</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+        <div class="picture">
+            <img src="imgs/화장품배너.jpg" alt="화장품배너" class="picture_img">
+            <div class="picture_note">
+                <span>화장품배너</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+        <div class="picture">
+            <img src="imgs/화장품상세페이지-목업1.jpg" alt="화장품상세페이지" class="picture_img">
+            <div class="picture_note">
+                <span>포토샵화장품상세페이지</span>
+            </div><!-- picture_note -->
+        </div><!-- picture -->
+
+    </div><!-- container -->
+
+    
+    <script lang="java">
+        $(function () {
+            $(".picture").draggable({
+
+            })
+        }) //jq
+    </script>
+
+    <script lang="java">
+        const pictures = document.querySelectorAll(".picture");
+        var previousTouch = undefined;
+
+        function updateElementPosition(element,event){
+
+            var movementX, movementY;
+            if(event.type === "touchmove"){
+                const touch = event.touches[0];
+                movementX = previousTouch ? touch.clientX - previousTouch.clientX : 0;
+                movementY =  previousTouch ? touch.clientY - previousTouch.clientY : 0;
+                previousTouch = touch;
+            }else{
+                movementX = event.movementX;
+                movementY = event.movementY;
+            }//if
+
+            const elementX = parseInt(element.style.left || 0) + movementX
+            const elementY = parseInt(element.style.top || 0) + movementY
+
+            element.style.left= elementX + "px"
+            element.style.top= elementY + "px"
+
+        }//updateElementPosition
+        
+            function startDrag(element,event){
+                const updateFunction = (event) => updateElementPosition(element,event);
+                const stopFunction = () => stopDrag({update : updateFunction, stop:stopFunction})
+                document.addEventListener("mousemove", updateFunction)
+                document.addEventListener("touchmove", updateFunction)
+                document.addEventListener("mouseup", stopFunction)
+                document.addEventListener("touchend", stopFunction)
+            }
+
+            function stopDrag(functions){
+                previousTouch = undefined;
+                document.removeEventListener("mousemove", functions.update)
+                document.removeEventListener("touchmove", functions.update)
+                document.removeEventListener("mouseup", functions.stop)
+                document.removeEventListener("touchend", functions.stop)
+            }
+
+        pictures.forEach(picture => {
+            const range = 100;
+            const randomX = Math.random() * (range*2) - range;
+            const randomY =  Math.random() * (range*2) - range;
+            const randomRotate =  Math.random() *(range / 2) - range / 4;
+            const startFunction = (event) => startDrag(picture,event)
+
+            picture.style.top = `${randomY}px`;
+            picture.style.left = `${randomX}px`;
+            picture.style.transform = `translate(-50% ,-50%) rotate(${randomRotate}deg)`;
+            picture.addEventListener("mousedown",startFunction);
+            picture.addEventListener("touchstart",startFunction);
+        })
+    </script>
+</body>
+
+</html>

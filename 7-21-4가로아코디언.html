@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <script src="script/jquery-3.6.4.js"></script>
+    <script src="script/jquery-ui.js"></script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Black Han Sans', sans-serif;
+            overflow: hidden;
+            background-color: rgb(210, 231, 248);
+            background-image: linear-gradient(to top, rgb(210, 231, 248) 0%, #fff 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            padding: 0 20px;
+        }
+
+        .slide {
+            height: 80vh;
+            border-radius: 20px;
+            margin: 10px;
+            cursor: pointer;
+            color: #fff;
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            transition: all 0.7s ease-in-out;
+            filter: blur(4px);
+        }
+
+        .slide.active {
+            flex: 10;
+            filter: blur(0);
+        }
+
+        .slide h3 {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            font-size: 3vw;
+            background-color: thistle;
+            background-image: linear-gradient(-220deg, rgb(28, 226, 84) 0%, rgb(255, 255, 255) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+        }
+
+        .slide.active h3 {
+            opacity: 1;
+            transition: all 0.3s ease-in 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slide" style="background-image: url('imgs/인어공주목업.jpg');">
+            <h3>팝아트_인어공주</h3>
+        </div><!-- slide -->
+
+        <div class="slide" style="background-image: url('imgs/더글로리포스터.jpg');">
+            <h3>포토샵+더글로리포스터</h3>
+        </div><!-- slide -->
+
+        <div class="slide" style="background-image: url('imgs/제주여행배너.jpg');">
+            <h3>포토샵_제주여행배너</h3>
+        </div><!-- slide -->
+
+        <div class="slide" style="background-image: url('imgs/화장품배너.jpg');">
+            <h3>포토샵_화장품배너</h3>
+        </div><!-- slide -->
+
+        <div class="slide" style="background-image: url('imgs/여행여플목업2.jpg');">
+            <h3>피그마_여행어플목업</h3>
+        </div><!-- slide -->
+
+    </div><!-- container -->
+
+    <script lang="java">
+        function slidePlugin(activeSlide = 2) {
+            const slides = document.querySelectorAll(".slide");
+
+            slides[activeSlide].classList.add("active");
+            for (const slide of slides) {
+                slide.addEventListener("click", () => {
+                    clearActiveClasses();
+                    slide.classList.add("active")
+                })
+            }
+
+            function clearActiveClasses() {
+                slides.forEach((slide) => {
+                    slide.classList.remove("active");
+                })
+            }
+        }
+
+        slidePlugin();
+    </script>
+</body>
+
+</html>
