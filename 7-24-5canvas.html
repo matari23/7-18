@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="mycanvas" width="200" height="100" style="border: 1px solid black;"></canvas>
+
+    <canvas id="mycanvas1" width="200" height="100" style="border: 1px solid black;"></canvas>
+
+    <canvas id="mycanvas2" width="200" height="100" style="border: 1px solid black;"></canvas>
+
+    <canvas id="mycanvas3" width="200" height="100" style="border: 1px solid black;"></canvas>
+
+    <canvas id="mycanvas4" width="200" height="100" style="border: 1px solid black;"></canvas>
+
+    <p>
+        <img src="imgs/bg1.jpg" alt="img" id="bg" width="200" height="150">
+    </p>
+
+    <canvas id="mycanvas5" width="250" height="300" style="border: 1px solid black;"></canvas>
+
+    <button onclick="mycanvas5()">click this</button>
+
+</body>
+<script lang="java">
+    const canvas = document.getElementById("mycanvas")
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#ff0000";
+    ctx.fillRect(0,0,150,75)
+
+    const canvas1 = document.querySelector("#mycanvas1")
+    const ctx1 = canvas1.getContext("2d")
+
+    ctx1.moveTo(0,0)
+    ctx1.lineTo(200,100)
+    ctx1.stroke()
+
+    const canvas2 = document.querySelector("#mycanvas2")
+    const ctx2 = canvas2.getContext("2d")
+
+    ctx2.beginPath()
+    ctx2.arc(95,50,40, 0 , 2*Math.PI)
+    //       x,y,반지륾,시작각도,끝각도
+    ctx2.stroke()
+
+    const canvas3 = document.querySelector("#mycanvas3")
+    const ctx3 = canvas3.getContext("2d")
+
+    ctx3.font = "25px Impact";
+    // ctx3.fillText("Hello World" , 10 ,50)
+    ctx3.strokeText("Hello World" , 10 ,50)
+
+    const canvas4 = document.querySelector("#mycanvas4")
+    const ctx4 = canvas3.getContext("2d")
+
+    var grd = ctx4.createLinearGradient(0 , 0 , 200 , 0)
+    grd.addColorStop(0, "green")
+    grd.addColorStop(1, "white")
+    ctx4.fillStyle = grd
+    ctx4.fillRect(10,10,150,80)
+
+    function mycanvas5(){
+        var c = document.getElementById("mycanvas5")
+        var ctx5 = c.getContext("2d")
+        var img = document.getElementById("bg")
+        ctx5.drawImage(bg ,10,10)
+    }
+
+</script>
+</html>

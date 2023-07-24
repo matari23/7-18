@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    *{margin: 0;padding: 0;}
+    body{
+        font-size: 24px;
+    }
+    .progress{
+        position: fixed;
+        left: 0;
+        top: 0;
+
+        background-color: #5c5b5b;
+        z-index: 100;
+        height: 10px;
+        /* width: 100%; */
+    }
+    .progress p{
+        position: fixed;
+        left: 20px;top: 20px;
+        font-size: 2rem;
+    }
+    section{
+        min-height: 100vh;
+        width: 100%;
+    }
+    section:nth-child(odd){
+        background-color: yellowgreen;
+    }
+    section:first-of-type{display: flex; justify-content: center; align-items: center;}
+    section:nth-child(even){
+
+    }
+</style>
+
+</head>
+<body>
+    <div class="progress">
+        <p></p>
+    </div><!-- progress -->
+
+    <section> <h1> Scroll down to progress</h1></section>
+    <section></section>
+    <section></section>
+    <section></section>
+
+    <script lang="java">
+        const progressTag = document.querySelector(".progress")
+        const progressText =document.querySelector(".progress p")
+        const bodyTag = document.querySelector("body")
+
+        document.addEventListener("scroll", ()=>{
+
+            const pixels = window.pageYOffset;
+            const pageHeight = bodyTag.getBoundingClientRect().height;
+            const totalHeight = pageHeight - window.innerHeight
+            const percentage = pixels / totalHeight;
+
+            console.log("pixels:", pixels)
+            console.log("pageHeight:", pageHeight)
+            console.log("totalHeight:", totalHeight)
+            console.log("percentage:", percentage)
+
+            progressTag.style.width = `${100 * percentage}%`;
+
+            if( pixels>0 ){
+                progressText.innerHTML = `${Math.floor(100 * percentage)}` +"%"
+            }else{
+                progressText.innerHTML =""
+            }
+        })
+        </script>
+
+</body>
+</html>
